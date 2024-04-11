@@ -1,0 +1,739 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database Address_Book_Service_db;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------------+
+| Database                 |
++--------------------------+
+| 07_dec                   |
+| 14july                   |
+| 30dec23_bridgelabz       |
+| address_book_service_db  |
+| baner                    |
+| db1                      |
+| demodb                   |
+| dtodb                    |
+| employ                   |
+| employee                 |
+| employyee_db             |
+| hefshine                 |
+| hibernate                |
+| hostel                   |
+| hotel_db                 |
+| information_schema       |
+| many2                    |
+| manyone                  |
+| mapping                  |
+| mydatabase               |
+| mynewdb                  |
+| mysql                    |
+| mysql1                   |
+| new_schema               |
+| newprojectdb             |
+| one                      |
+| onetomany                |
+| payroll_service_database |
+| performance_schema       |
+| practice                 |
+| procedure_schema         |
+| septprojectbatch         |
+| septtest                 |
+| songcurd                 |
+| spring_practicedb        |
+| springsat                |
+| student                  |
+| sys                      |
+| test1                    |
++--------------------------+
+39 rows in set (0.04 sec)
+
+mysql> use address_book_service_db;
+Database changed
+mysql> create table address_Book_Table();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table address_Book_Table()
+    -> create table address_Book_Table();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+create table address_Book_Table()' at line 1
+mysql> create table address_Book_Table(
+    -> firstName varchar(50),
+    -> lastName varchar(50),
+    -> address varchar(150),
+    -> city varchar(50),
+    -> state varchar(50),
+    -> ZIP varchar(6),
+    -> phoneNumber varchar(20),
+    -> email varchar(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from address_Book_Table;
+Empty set (0.01 sec)
+
+mysql> insert into address_Book_Table values ('suraj','kadam','12,Govandi-west,Mumbai','Pune','Maharashtra','405453','9876564532','suraj1233@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  select * from address_Book_Table;
++-----------+----------+------------------------+------+-------------+--------+-------------+---------------------+
+| firstName | lastName | address                | city | state       | ZIP    | phoneNumber | email               |
++-----------+----------+------------------------+------+-------------+--------+-------------+---------------------+
+| suraj     | kadam    | 12,Govandi-west,Mumbai | Pune | Maharashtra | 405453 | 9876564532  | suraj1233@gmail.com |
++-----------+----------+------------------------+------+-------------+--------+-------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql>  insert into address_Book_Table values ('sumit','hubale','14,sector-3,Belpada,kharghar','Mumbai','Maharashtra','456743','9876541316','sumit5566@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  select * from address_Book_Table;
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email               |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| suraj     | kadam    | 12,Govandi-west,Mumbai       | Pune   | Maharashtra | 405453 | 9876564532  | suraj1233@gmail.com |
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> update table address_Book_Table set city='Navi-Mumbai',phoneNumber='9080787654',email='surajk1122@gmail.com'
+    -> where firstName='suraj';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table address_Book_Table set city='Navi-Mumbai',phoneNumber='9080787654',email='' at line 1
+mysql>  update address_Book_Table set city='Navi-Mumbai',phoneNumber='9080787654',email='surajk1122@gmail.com'
+    ->  where firstName='suraj';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  select * from address_Book_Table;
++-----------+----------+------------------------------+-------------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city        | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-------------+-------------+--------+-------------+----------------------+
+| suraj     | kadam    | 12,Govandi-west,Mumbai       | Navi-Mumbai | Maharashtra | 405453 | 9080787654  | surajk1122@gmail.com |
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai      | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
++-----------+----------+------------------------------+-------------+-------------+--------+-------------+----------------------+
+2 rows in set (0.00 sec)
+
+mysql> delete from address_Book_Table where firstName='suraj';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from address_Book_Table;
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email               |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+1 row in set (0.00 sec)
+
+-----------------------------------------------------------New Line Added---------------------------------------------------------------------------------
+
+mysql>   select * from address_Book_Table;
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email               |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into address_Book_Table ('suraj','kadam','Market Yard, Pune','Pune','Maharashtra','456423','7656432321','surajk1233@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''suraj','kadam','Market Yard, Pune','Pune','Maharashtra','456423','7656432321','' at line 1
+mysql>  insert into address_Book_Table values ('suraj','kadam','Market Yard, Pune','Pune','Maharashtra','456423','7656432321','surajk1233@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  select * from address_Book_Table;
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune   | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+2 rows in set (0.00 sec)
+
+mysql>  insert into address_Book_Table ('Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','9867523123','vijayshettyblr@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','9867' at line 1
+mysql>  insert into address_Book_Table values ('Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','9867523123
+','vijayshettyblr@gmail.com');
+ERROR 1406 (22001): Data too long for column 'email' at row 1
+mysql>  insert into address_Book_Table values ('Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','9867523123
+','vshetty3344@gmail.com');
+ERROR 1406 (22001): Data too long for column 'email' at row 1
+mysql>  insert into address_Book_Table values ('Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','986752312'
+,'vshetty@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from address_Book_Table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+3 rows in set (0.00 sec)
+
+mysql>  insert into address_Book_Table values ('Amit','Bishnoi','29,Bhatinda','Mohali','Punjab','390320','9823267856','amitbh789@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  select * from address_Book_Table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from address_Book_Table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql>  select * from address_Book_Table where city='Mumbai';
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email               |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql>  select * from address_Book_Table where state='Maharashtra';
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune   | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+2 rows in set (0.00 sec)
+
+mysql> select count(*) from address_Book_Table where state='Maharashtra';
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select state, count(state) from address_Book_Table group by state;
++-------------+--------------+
+| state       | count(state) |
++-------------+--------------+
+| Maharashtra |            2 |
+| Karnataka   |            1 |
+| Punjab      |            1 |
++-------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql>  select city, count(city) from address_Book_Table group by city;e;
++-----------+-------------+
+| city      | count(city) |
++-----------+-------------+
+| Mumbai    |           1 |
+| Pune      |           1 |
+| Bengalore |           1 |
+| Mohali    |           1 |
++-----------+-------------+
+4 rows in set (0.00 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'e' at line 1
+mysql>  select city, count(city) from address_Book_Table group by city;
++-----------+-------------+
+| city      | count(city) |
++-----------+-------------+
+| Mumbai    |           1 |
+| Pune      |           1 |
+| Bengalore |           1 |
+| Mohali    |           1 |
++-----------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from address_Book_Table sort by;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by' at line 1
+mysql> select * from address_book_table order by state;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from address_book_table order by state desc;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  |
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql>  select state from address_book_table order by state desc;
++-------------+
+| state       |
++-------------+
+| Punjab      |
+| Maharashtra |
+| Maharashtra |
+| Karnataka   |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql>  select state from address_book_table order by state;
++-------------+
+| state       |
++-------------+
+| Karnataka   |
+| Maharashtra |
+| Maharashtra |
+| Punjab      |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table address_book_table
+    -> add column name varchar(20),
+    -> add column type varchar(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+------+------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name | type |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+------+------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | NULL | NULL |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | NULL | NULL |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | NULL | NULL |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | NULL | NULL |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+------+------+
+4 rows in set (0.00 sec)
+
+mysql> update address_book_table set name='Mumbai' ,type='AddressBook1' where firstName='sumit';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name   | type         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | Mumbai | AddressBook1 |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | NULL   | NULL         |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | NULL   | NULL         |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | NULL   | NULL         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+4 rows in set (0.00 sec)
+
+mysql>  update address_book_table set name='Pune' ,type='AddressBook2' where firstName='suraj';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name   | type         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | Mumbai | AddressBook1 |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | Pune   | AddressBook2 |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | NULL   | NULL         |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | NULL   | NULL         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+4 rows in set (0.00 sec)
+
+mysql>  update address_book_table set name='Bengalore' ,type='AddressBook3' where firstName='Vijay';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  update address_book_table set name='Mohali' ,type='AddressBook4' where firstName='Amit';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+-----------+--------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name      | type         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+-----------+--------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | Mumbai    | AddressBook1 |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | Pune      | AddressBook2 |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | Bengalore | AddressBook3 |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | Mohali    | AddressBook4 |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+-----------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into address_book_table values ('vivek','sonawale','Hiranandani Building,Juhu','Mumbai','Maharashtra','456789','8976512343','viveks123@gmail.com','viveksonawale','friends');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+---------------+--------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name          | type         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+---------------+--------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | Mumbai        | AddressBook1 |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | Pune          | AddressBook2 |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | Bengalore     | AddressBook3 |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | Mohali        | AddressBook4 |
+| vivek     | sonawale | Hiranandani Building,Juhu    | Mumbai    | Maharashtra | 456789 | 8976512343  | viveks123@gmail.com  | viveksonawale | friends      |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+---------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> update address_book_table set name='surajkadam',type='family' where name='Mumbai';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select type,count(type) from address_book_table group by type;
++---------+-------------+
+| type    | count(type) |
++---------+-------------+
+| family  |           2 |
+| friends |           3 |
++---------+-------------+
+2 rows in set (0.00 sec)
+
+
+ select * from address_Book_Table;
+ERROR 1046 (3D000): No database selected
+mysql> use address_book_service_db;
+Database changed
+mysql>  select * from address_Book_Table;
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email               |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into address_Book_Table ('suraj','kadam','Market Yard, Pune','Pune','Maharashtra','456423','7656432321','surajk1233@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''suraj','kadam','Market Yard, Pune','Pune','Maharashtra','456423','7656432321','' at line 1
+mysql>  insert into address_Book_Table values ('suraj','kadam','Market Yard, Pune','Pune','Maharashtra','456423','7656432321','surajk1233@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  select * from address_Book_Table;
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune   | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+2 rows in set (0.00 sec)
+
+mysql>  insert into address_Book_Table ('Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','9867523123','vijayshettyblr@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','9867' at line 1
+mysql>  insert into address_Book_Table values ('Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','9867523123
+','vijayshettyblr@gmail.com');
+ERROR 1406 (22001): Data too long for column 'email' at row 1
+mysql>  insert into address_Book_Table values ('Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','9867523123
+','vshetty3344@gmail.com');
+ERROR 1406 (22001): Data too long for column 'email' at row 1
+mysql>  insert into address_Book_Table values ('Vijay','Shetty','sector-29,MarathaHalli','Bengalore','Karnataka','423415','986752312'
+,'vshetty@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from address_Book_Table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+3 rows in set (0.00 sec)
+
+mysql>  insert into address_Book_Table values ('Amit','Bishnoi','29,Bhatinda','Mohali','Punjab','390320','9823267856','amitbh789@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  select * from address_Book_Table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from address_Book_Table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql>  select * from address_Book_Table where city='Mumbai';
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email               |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql>  select * from address_Book_Table where state='Maharashtra';
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city   | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune   | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
++-----------+----------+------------------------------+--------+-------------+--------+-------------+----------------------+
+2 rows in set (0.00 sec)
+
+mysql> select count(*) from address_Book_Table where state='Maharashtra';
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select state, count(state) from address_Book_Table group by state;
++-------------+--------------+
+| state       | count(state) |
++-------------+--------------+
+| Maharashtra |            2 |
+| Karnataka   |            1 |
+| Punjab      |            1 |
++-------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql>  select city, count(city) from address_Book_Table group by city;e;
++-----------+-------------+
+| city      | count(city) |
++-----------+-------------+
+| Mumbai    |           1 |
+| Pune      |           1 |
+| Bengalore |           1 |
+| Mohali    |           1 |
++-----------+-------------+
+4 rows in set (0.00 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'e' at line 1
+mysql>  select city, count(city) from address_Book_Table group by city;
++-----------+-------------+
+| city      | count(city) |
++-----------+-------------+
+| Mumbai    |           1 |
+| Pune      |           1 |
+| Bengalore |           1 |
+| Mohali    |           1 |
++-----------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from address_Book_Table sort by;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by' at line 1
+mysql> select * from address_book_table order by state;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from address_book_table order by state desc;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  |
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql>  select state from address_book_table order by state desc;
++-------------+
+| state       |
++-------------+
+| Punjab      |
+| Maharashtra |
+| Maharashtra |
+| Karnataka   |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql>  select state from address_book_table order by state;
++-------------+
+| state       |
++-------------+
+| Karnataka   |
+| Maharashtra |
+| Maharashtra |
+| Punjab      |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table address_book_table
+    -> add column name varchar(20),
+    -> add column type varchar(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+------+------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name | type |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+------+------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | NULL | NULL |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | NULL | NULL |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | NULL | NULL |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | NULL | NULL |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+------+------+
+4 rows in set (0.00 sec)
+
+mysql> update address_book_table set name='Mumbai' ,type='AddressBook1' where firstName='sumit';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name   | type         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | Mumbai | AddressBook1 |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | NULL   | NULL         |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | NULL   | NULL         |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | NULL   | NULL         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+4 rows in set (0.00 sec)
+
+mysql>  update address_book_table set name='Pune' ,type='AddressBook2' where firstName='suraj';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name   | type         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | Mumbai | AddressBook1 |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | Pune   | AddressBook2 |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | NULL   | NULL         |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | NULL   | NULL         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+--------+--------------+
+4 rows in set (0.00 sec)
+
+mysql>  update address_book_table set name='Bengalore' ,type='AddressBook3' where firstName='Vijay';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  update address_book_table set name='Mohali' ,type='AddressBook4' where firstName='Amit';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+-----------+--------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name      | type         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+-----------+--------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | Mumbai    | AddressBook1 |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | Pune      | AddressBook2 |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | Bengalore | AddressBook3 |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | Mohali    | AddressBook4 |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+-----------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into address_book_table values ('vivek','sonawale','Hiranandani Building,Juhu','Mumbai','Maharashtra','456789','8976512343','viveks123@gmail.com','viveksonawale','friends');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from address_book_table;
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+---------------+--------------+
+| firstName | lastName | address                      | city      | state       | ZIP    | phoneNumber | email                | name          | type         |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+---------------+--------------+
+| sumit     | hubale   | 14,sector-3,Belpada,kharghar | Mumbai    | Maharashtra | 456743 | 9876541316  | sumit5566@gmail.com  | Mumbai        | AddressBook1 |
+| suraj     | kadam    | Market Yard, Pune            | Pune      | Maharashtra | 456423 | 7656432321  | surajk1233@gmail.com | Pune          | AddressBook2 |
+| Vijay     | Shetty   | sector-29,MarathaHalli       | Bengalore | Karnataka   | 423415 | 986752312   | vshetty@gmail.com    | Bengalore     | AddressBook3 |
+| Amit      | Bishnoi  | 29,Bhatinda                  | Mohali    | Punjab      | 390320 | 9823267856  | amitbh789@gmail.com  | Mohali        | AddressBook4 |
+| vivek     | sonawale | Hiranandani Building,Juhu    | Mumbai    | Maharashtra | 456789 | 8976512343  | viveks123@gmail.com  | viveksonawale | friends      |
++-----------+----------+------------------------------+-----------+-------------+--------+-------------+----------------------+---------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> update address_book_table set name='surajkadam',type='family' where name='Mumbai';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select type,count(type) from address_book_table group by type;
++---------+-------------+
+| type    | count(type) |
++---------+-------------+
+| family  |           2 |
+| friends |           3 |
++---------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> create table addressBooktypes
+    -> ( id int auto_increment primary key,
+    -> type varchar(255));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from addressBooktypes;
+Empty set (0.01 sec)
+
+mysql> select * from addressBooktypes where 1=0;
+Empty set (0.00 sec)
+
+mysql> show columns from addressBooktypes;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| type  | varchar(255) | YES  |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> create table person
+    -> ( personId int auto_increment primary key,
+    -> personName varchar(250));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show columns from person;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| personId   | int          | NO   | PRI | NULL    | auto_increment |
+| personName | varchar(250) | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> create table personType
+    -> (personId int,
+    -> typeId int,
+    -> foreign key personId references person(personId),
+    -> foreign key typeId references addressBooktypes(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'references person(personId),
+foreign key typeId references addressBooktypes(id))' at line 4
+mysql>  create table personType
+    -> (personId int,
+    -> typeId int,
+    ->  foreign key (personId) references person(personId),
+    ->  foreign key (typeId) references addressBooktypes(id));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> select * from personType;
+Empty set (0.00 sec)
+
+mysql> show columns personType;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'personType' at line 1
+mysql> show colums from personType;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'colums from personType' at line 1
+mysql>  show columns from personType;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| personId | int  | YES  | MUL | NULL    |       |
+| typeId   | int  | YES  | MUL | NULL    |       |
++----------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
